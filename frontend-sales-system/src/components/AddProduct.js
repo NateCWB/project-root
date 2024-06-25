@@ -4,15 +4,17 @@ import axios from 'axios';
 const AddProduct = () => {
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
-  const [description, setDescription] = useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const newProduct = { name, price, description };
-    await axios.post('http://localhost:5000/products', newProduct);
-    setName('');
-    setPrice('');
-    setDescription('');
+    try {
+      await axios.post('http://localhost:5000/products', { name, price });
+      alert('Product added successfully');
+      setName('');
+      setPrice('');
+    } catch (error) {
+      alert('Failed to add product');
+    }
   };
 
   return (
@@ -30,12 +32,7 @@ const AddProduct = () => {
         value={price}
         onChange={(e) => setPrice(e.target.value)}
       />
-      <textarea
-        placeholder="Description"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-      />
-      <button type="submit">Add</button>
+      <button type="submit">Add Product</button>
     </form>
   );
 };

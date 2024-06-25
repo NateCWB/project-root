@@ -6,8 +6,12 @@ const ProductList = () => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const response = await axios.get('http://localhost:5000/products');
-      setProducts(response.data);
+      try {
+        const response = await axios.get('http://localhost:5000/products');
+        setProducts(response.data);
+      } catch (error) {
+        alert('Failed to fetch products');
+      }
     };
 
     fetchProducts();
@@ -15,12 +19,10 @@ const ProductList = () => {
 
   return (
     <div>
-      <h1>Product List</h1>
+      <h1>Products</h1>
       <ul>
-        {products.map(product => (
-          <li key={product.id}>
-            {product.name} - ${product.price}
-          </li>
+        {products.map((product) => (
+          <li key={product.id}>{product.name} - ${product.price}</li>
         ))}
       </ul>
     </div>
