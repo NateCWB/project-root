@@ -1,22 +1,15 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import ProductList from './components/ProductList.js';
-import AddProduct from './components/AddProduct.js';
-import EmployeePanel from './components/EmployeePanel.js';
-import Login from './components/Login.js';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Login from './components/Login';
+import Dashboard from './components/Dashboard';
 
 const App = () => {
   return (
     <Router>
-      <div>
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/products" element={<ProductList />} />
-          <Route path="/add" element={<AddProduct />} />
-          <Route path="/employee" element={<EmployeePanel />} />
-          <Route path="/" element={<Navigate to="/login" />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
     </Router>
   );
 };

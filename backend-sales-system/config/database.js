@@ -1,11 +1,11 @@
-// Configuração do banco de dados usando Sequelize (config/db.js)
-
+// db.js
 const { Sequelize } = require('sequelize');
 
 const sequelize = new Sequelize('sales_system', 'postgres', 'admin123', {
     host: 'localhost',
-    dialect: 'postgres'
+    dialect: 'postgres',
 });
 
 module.exports = sequelize;
+
 
